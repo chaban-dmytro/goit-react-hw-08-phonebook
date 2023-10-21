@@ -63,33 +63,5 @@ export default function RegisterView() {
         </Button>
       </Form>
     </Formik>
-    // <div>
-    //   <h1>Registration</h1>
-
-    //   <form onSubmit={handleSubmit} autoComplete="off">
-    //     <label>
-    //       Name
-    //       <input type="text" name="name" value={name} onChange={handleChange} />
-    //     </label>
-    //     <label>
-    //       Email
-    //       <input
-    //         type="email"
-    //         name="email"
-    //         value={email}
-    //         onChange={handleChange}
-    //       />
-    //     </label>
-    //     <label>
-    //       Password
-    //       <input
-    //         type="password"
-    //         name="password"
-    //         value={password}
-    //         onChange={handleChange}
-    //       />
-    //     </label>
-    //   </form>
-    // </div>
   );
 }
