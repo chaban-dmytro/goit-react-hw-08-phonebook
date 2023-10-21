@@ -30,11 +30,11 @@ const App = () => {
         <header>
           <ul className="nav">
             <li className="nav_item">
-              <NavLink to="/">Home</NavLink>
+              <NavLink to={'/'}>Home</NavLink>
             </li>
             {isLoggedIn && (
               <li className="nav_item">
-                <NavLink to="/contacts">Contacts</NavLink>
+                <NavLink to={'/contacts'}>Contacts</NavLink>
               </li>
             )}
           </ul>
@@ -47,7 +47,7 @@ const App = () => {
             path="/login"
             element={
               <Suspense>
-                <PublicRoute>
+                <PublicRoute redirectTo="/contacts">
                   <LoginView />
                 </PublicRoute>
               </Suspense>
@@ -57,7 +57,7 @@ const App = () => {
             path="/registration"
             element={
               <Suspense>
-                <PublicRoute>
+                <PublicRoute redirectTo="/contacts">
                   <RegisterView />
                 </PublicRoute>
               </Suspense>
@@ -66,13 +66,14 @@ const App = () => {
           <Route
             path="/contacts"
             element={
-              <PrivateRoute>
+              <PrivateRoute redirectTo="/login">
                 <AddContact />
                 <Filter />
                 <ContactList />
               </PrivateRoute>
             }
           />
+          <Route path="*" element={<Home />} />
         </Routes>
       </>
     )
