@@ -10,7 +10,6 @@ export const getAllContacts = () => {
 };
 
 export const addContact = contact => {
-  console.log(contact);
   return axios.post('/contacts', { name: contact.name, number: contact.phone });
 };
 

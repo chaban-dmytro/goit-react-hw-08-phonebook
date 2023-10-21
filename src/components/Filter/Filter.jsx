@@ -15,7 +15,7 @@ const Filter = () => {
     return;
   } else {
     return (
-      <>
+      <div className={css.wrapper}>
         <label className={css.label} htmlFor="filter">
           Find contacts by name
         </label>
@@ -26,7 +26,7 @@ const Filter = () => {
           type="text"
           onChange={onFilterInputChange}
         />
-      </>
+      </div>
     );
   }
 };

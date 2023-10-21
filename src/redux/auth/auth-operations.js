@@ -18,6 +18,9 @@ export const register = createAsyncThunk('auth/register', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
+    alert(
+      'User witch this email or this name is already registrated. Try another name and e-mail'
+    );
     console.log('ERROR ');
   }
 });
@@ -28,6 +31,7 @@ export const login = createAsyncThunk('auth/login', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
+    alert('Wrong email or password');
     console.log('ERROR ');
   }
 });
@@ -38,6 +42,25 @@ export const logout = createAsyncThunk('auth/logout', async () => {
     token.unset();
     return data;
   } catch (error) {
+    alert('Try reload page. Logout is failed');
     console.log('ERROR ');
   }
 });
+
+export const refreshCurrentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    token.set(persistedToken);
+    try {
+      const { data } = await axios.get('/users/current');
+      return data;
+    } catch (error) {
+      console.log('ERROR ');
+    }
+  }
+);

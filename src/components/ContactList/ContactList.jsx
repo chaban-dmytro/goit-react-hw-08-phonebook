@@ -36,9 +36,11 @@ const ContactList = () => {
           {getFilterContacts().map(contact => {
             return (
               <li className={css.item} key={contact.id}>
-                <span>{contact.name}: </span>
-                <span>{contact.phone}</span>
+                <span>
+                  {contact.name}: <span>{contact.number}</span>
+                </span>
                 <Button
+                  className={css.button}
                   type="button"
                   variant="contained"
                   onClick={() => onDeleteContact(contact.id)}

@@ -8,7 +8,6 @@ export default function LoginView() {
   const dispatch = useDispatch();
 
   const handleSubmit = values => {
-    console.log(values);
     dispatch(login(values));
   };
 
@@ -34,8 +33,8 @@ export default function LoginView() {
   return (
     <Formik
       initialValues={{
-        name: '',
         email: '',
+        password: '',
       }}
       // validationSchema={validationSchema}
       onSubmit={(values, actions) => {
@@ -43,7 +42,7 @@ export default function LoginView() {
         actions.resetForm();
       }}
     >
-      <Form>
+      <Form className="form">
         <label htmlFor="email">Email</label>
         <Field id="email" name="email" type="email" />
         <ErrorMessage name="email" component="span" />

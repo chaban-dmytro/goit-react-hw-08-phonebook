@@ -7,16 +7,10 @@ import { Button } from '@mui/material';
 
 export default function RegisterView() {
   const dispatch = useDispatch();
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPasword] = useState('');
 
   const handleSubmit = values => {
     console.log(values);
     dispatch(register(values));
-    // setName('');
-    // setEmail('');
-    // setPasword('');
   };
 
   const validationSchema = Yup.object().shape({
@@ -33,7 +27,7 @@ export default function RegisterView() {
       .max(50, 'Your name is too long')
       .required('Please write your email'),
     password: Yup.string()
-      .min(7, 'Your name must be more than 3 symbols!')
+      .min(7, 'Your name must be more than 7 symbols!')
       .max(20, 'Your name is too long')
       .required('Please write your password'),
   });
@@ -51,7 +45,7 @@ export default function RegisterView() {
         actions.resetForm();
       }}
     >
-      <Form>
+      <Form className="form">
         <label htmlFor="name">Name</label>
         <Field id="name" name="name" type="text" />
         <ErrorMessage name="name" component="span" />
